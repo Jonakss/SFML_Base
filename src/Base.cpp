@@ -13,12 +13,13 @@ Base::~Base(){
 
 };
 
-void Base::run(){
-	while(this->window->isOpen()){
-		this->update();
-		this->render();
-	}
+void Base::updateDt(){
+	//Update the dt variable with the time it takes to update and render one frame
+	this->dt = this->dtClock.restart().asSeconds();
+	std::system("clear");
+	std::cout << this->dt << std::endl;
 };
+
 
 void Base::render(){
 	this->window->clear();
@@ -39,4 +40,11 @@ void Base::updateEvents(){
 	}
 };
 
+void Base::run(){
+	while(this->window->isOpen()){
+		this->updateDt();
+		this->update();
+		this->render();
+	}
+};
 

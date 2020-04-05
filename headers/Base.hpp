@@ -1,6 +1,8 @@
 #ifndef BASE_H
 #define BASE_H
 
+#include <iostream>
+
 #include "SFML/System.hpp"
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
@@ -15,11 +17,17 @@ private:
 	sf::RenderWindow* window;
 	sf::Event event;
 
+	//Clock
+	sf::Clock dtClock;
+	//delta time
+	float dt;
+
 	void initWindow();	
 public:
 	Base();
 	~Base();
 
+	void updateDt();
 	void render();
 	void update();
 	void updateEvents();
