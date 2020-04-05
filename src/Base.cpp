@@ -15,6 +15,8 @@ void Base::initWindow(){
 		ifs >> frameRateLimit;
 		ifs >> vSync;
 	}
+
+	ifs.close();
 	
 	this->window = new sf::RenderWindow(windowConf, title);
 	this->window->setFramerateLimit(frameRateLimit);
@@ -27,7 +29,7 @@ Base::Base(){
 };
 
 Base::~Base(){
-
+	delete this->window;
 };
 
 void Base::updateDt(){
