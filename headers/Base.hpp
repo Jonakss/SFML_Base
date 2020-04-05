@@ -2,6 +2,7 @@
 #define BASE_H
 
 #include <iostream>
+#include <fstream>
 
 #include "SFML/System.hpp"
 #include "SFML/Window.hpp"

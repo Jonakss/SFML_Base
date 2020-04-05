@@ -1,7 +1,24 @@
 #include "../headers/Base.hpp"
 
 void Base::initWindow(){
-	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML Base");
+	
+	std::ifstream ifs("config/window.conf");
+
+	sf::VideoMode windowConf(800,600);
+	std::string title = "None";
+	unsigned frameRateLimit = 120;
+	bool vSync = false;
+
+	if(ifs.is_open()){
+		std::getline(ifs, title);
+		ifs >> windowConf.width >> windowConf.height;
+		ifs >> frameRateLimit;
+		ifs >> vSync;
+	}
+	
+	this->window = new sf::RenderWindow(windowConf, title);
+	this->window->setFramerateLimit(frameRateLimit);
+	this->window->setVerticalSyncEnabled(vSync);
 };
 
 Base::Base(){
@@ -16,8 +33,6 @@ Base::~Base(){
 void Base::updateDt(){
 	//Update the dt variable with the time it takes to update and render one frame
 	this->dt = this->dtClock.restart().asSeconds();
-	std::system("clear");
-	std::cout << this->dt << std::endl;
 };
 
 
