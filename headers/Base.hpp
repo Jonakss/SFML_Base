@@ -23,7 +23,7 @@ private:
 	//delta time
 	float dt;
 
-	void initWindow();	
+	void initWindow();
 public:
 	Base();
 	~Base();

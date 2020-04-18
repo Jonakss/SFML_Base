@@ -1,7 +1,7 @@
 #include "../headers/Base.hpp"
 
 void Base::initWindow(){
-	
+
 	std::ifstream ifs("config/window.conf");
 
 	sf::VideoMode windowConf(800,600);
@@ -17,7 +17,7 @@ void Base::initWindow(){
 	}
 
 	ifs.close();
-	
+
 	this->window = new sf::RenderWindow(windowConf, title);
 	this->window->setFramerateLimit(frameRateLimit);
 	this->window->setVerticalSyncEnabled(vSync);
@@ -64,4 +64,3 @@ void Base::run(){
 		this->render();
 	}
 };
-
