@@ -18,7 +18,7 @@ private:
 	sf::RenderWindow* window;
 	sf::Event event;
 
-	//Clock
+	//Clock system
 	sf::Clock dtClock;
 	//delta time
 	float dt;

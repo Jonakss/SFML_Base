@@ -5,6 +5,8 @@ CFLAGS=-Wall -std=c++11
 DEPS=./headers/main.hpp ./headers/Base.hpp
 OBJ_MAIN=main.o Base.o
 
+all: Base clean
+
 Base: $(OBJ_MAIN)
 	$(CC) $(OBJ_MAIN) -o Base $(CLIB) $(CINCLUDE)
 
@@ -14,5 +16,6 @@ main.o: src/main.cpp
 Base.o: src/Base.cpp headers/Base.hpp
 	$(CC) -c src/Base.cpp $(CINCLUDE)
 
-.PHONY: clean
+clean:
 	rm -fr *.o
+	echo "Cleaning done"
