@@ -3,20 +3,17 @@ CLIB=-L/opt/SFML-2.5.1/lib -lsfml-graphics -lsfml-window -lsfml-system
 CINCLUDE=-I/opt/SFML-2.5.1/include
 CFLAGS=-Wall -std=c++11
 DEPS=./headers/main.hpp ./headers/Base.hpp
-OBJ_MAIN=main.o Base.o
-EXEC=Base
+OF=./out/
+OBJ_MAIN=$(OF)main.o $(OF)Base.o $(OF)State.o
+EXEC=SFML_Base
 
-all: Base clean
-
-Base: $(OBJ_MAIN)
+$(EXEC): $(OBJ_MAIN)
 	$(CC) $(OBJ_MAIN) -o $(EXEC) $(CLIB) $(CINCLUDE)
 
-main.o: src/main.cpp
-	$(CC) -c src/main.cpp $(CINCLUDE)
+$(OBJ_MAIN):
+	$(CC) -c src/$(basename $(notdir $@)).cpp $(CINCLUDE) -o $(basename $@).o
 
-Base.o: src/Base.cpp headers/Base.hpp
-	$(CC) -c src/Base.cpp $(CINCLUDE)
 
 clean:
-	rm -fr *.o
+	rm -fr ./out/*.o
 	echo "Cleaning done"
