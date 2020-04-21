@@ -4,7 +4,7 @@ CINCLUDE=-I/opt/SFML-2.5.1/include
 CFLAGS=-Wall -std=c++11
 DEPS=./headers/main.hpp ./headers/Base.hpp
 OF=./out/
-OBJ_MAIN=$(OF)main.o $(OF)Base.o $(OF)State.o
+OBJ_MAIN=$(patsubst %.cpp,%.o,$(wildcard ./src/*.cpp))
 EXEC=SFML_Base
 
 $(EXEC): $(OBJ_MAIN)
