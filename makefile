@@ -7,7 +7,7 @@ OF=./out/
 OBJ_MAIN=$(patsubst ./src/%,./out/%,$(patsubst %.cpp,%.o,$(wildcard ./src/*.cpp)))
 EXEC=SFML_Base
 
-$(EXEC): $(OBJ_MAIN)
+$(EXEC): clean $(OBJ_MAIN)
 	$(CC) $(OBJ_MAIN) -o $(EXEC) $(CLIB) $(CINCLUDE)
 
 $(OBJ_MAIN):
